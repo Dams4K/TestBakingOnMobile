@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbnuo3qrajo0y"]
+
+[ext_resource type="PackedScene" uid="uid://bapoaf8cvhqi6" path="res://cube.glb" id="1_f3sb7"]
+[ext_resource type="LightmapGIData" uid="uid://7m6ilvg43chs" path="res://world.lmbake" id="2_fj7yv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fj7yv"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_tlwt5"]
+sky_material = SubResource("ProceduralSkyMaterial_fj7yv")
+
+[sub_resource type="Environment" id="Environment_aqk2v"]
+background_mode = 2
+sky = SubResource("Sky_tlwt5")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_aqk2v")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.977072, -0.212911, 0, 0.212911, 0.977072, 0, 2, 0)
+
+[node name="cube" parent="." instance=ExtResource("1_f3sb7")]
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("2_fj7yv")
